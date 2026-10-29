@@ -1,6 +1,6 @@
 ---
 name: job-apply-pipeline
-description: 求职网申全流程助手（Claude 和 ChatGPT 都能用）：找岗、按 JD 判断匹配度、选简历、写 cover letter、用浏览器代理填官网/ATS 表单（LinkedIn Easy Apply、Greenhouse、Ashby、Lever、Workday、Oracle、Workable、Rippling、国内校招官网等）、核对附件后提交，再把每份投递记进 Excel 投递追踪表并汇总。只要用户提到投递、网申、投简历、海投、每日投递、帮我投某个岗位、继续填某个申请表、重投、查投了多少份/投过某公司没有、更新投递表、给某公司写 cover letter，或“每日求职投递”这类定时任务运行时，都要用这个 skill——哪怕用户只说“投吧”“继续填”“X 公司你继续”。
+description: 求职网申全流程助手（Claude 和 ChatGPT 都能用）：找岗、按 JD 判断匹配度、选简历、写 cover letter、用浏览器代理填官网/ATS 表单（LinkedIn Easy Apply、Greenhouse、Ashby、Lever、Workday、Oracle、Workable、Rippling、国内校招官网等）、核对附件后提交，再把每份投递记进 Excel 投递追踪表并汇总。只要用户提到投递、网申、投简历、海投、每日投递、帮我投某个岗位、继续填某个申请表、重投、查投了多少份/投过某公司没有、更新投递表、给某公司写 cover letter，LinkedIn 加好友/打招呼、BOSS 直聘/猎聘/实习僧打招呼，或“每日求职投递”这类定时任务运行时，都要用这个 skill——哪怕用户只说“投吧”“继续填”“X 公司你继续”。
 ---
 
 # 求职网申流程
@@ -38,6 +38,7 @@ description: 求职网申全流程助手（Claude 和 ChatGPT 都能用）：找
 | `references/selection-and-matching.md` | 选岗、判断要不要投、推荐限投候选 |
 | `references/platform-playbook.md` | 进入某个平台/ATS 填表时，只看那一节；以及批量找岗 |
 | `references/excel-tracker.md` | 读写 Excel、统计投递数量 |
+| `references/outreach.md` | LinkedIn 加好友/跟进，BOSS 直聘、猎聘、实习僧打招呼 |
 | `scripts/cover_letter.py` | 生成 cover letter PDF |
 | `scripts/tracker_update.py` | 建表、追加/更新行（自动备份、复制样式、按表头找列） |
 
@@ -97,6 +98,9 @@ description: 求职网申全流程助手（Claude 和 ChatGPT 都能用）：找
 - 用浏览器或邮箱连接器打开用户的求职邮箱（只读，不回复不删除；确认连的是档案里那个邮箱），看昨天以来的拒信/面试/测评，更新对应行；面试和测评置顶，时间写清时区。
 - 汇总（定时任务里有需要用户处理的事就推送通知）：今天各投了几份（公司+职位）、限投候选、卡住的（原因 + 用户要做什么 + 标签标题）、收到的回信。简短。
 - 新踩的坑记到用户的笔记里（有项目文档就追加当天的 notes）。
+
+## 打招呼任务
+用户要做 LinkedIn 加好友、BOSS 直聘/猎聘/实习僧打招呼时，读 `references/outreach.md`。硬规则同样适用（尤其：只写真实事实、对方回复不代回、遇到验证立即停）。
 
 ## 常见追问
 
