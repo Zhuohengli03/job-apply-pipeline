@@ -41,6 +41,7 @@ description: 求职网申全流程助手（Claude 和 ChatGPT 都能用）：找
 | `references/outreach.md` | LinkedIn 加好友/跟进，BOSS 直聘、猎聘、实习僧打招呼 |
 | `scripts/cover_letter.py` | 生成 cover letter PDF |
 | `scripts/tracker_update.py` | 建表、追加/更新行（自动备份、复制样式、按表头找列） |
+| `scripts/job_pool.py` | 岗位库：收集各来源岗位、去重、和投递表比对、标记看过的岗位 |
 
 用户如果有自己的“每日踩坑笔记”（例如项目文档里的 daily notes），也读最近一两天的，新坑以笔记为准。
 
@@ -69,6 +70,7 @@ description: 求职网申全流程助手（Claude 和 ChatGPT 都能用）：找
 
 ### 第 1 步：找岗
 - 配额以用户说的或档案里的为准；没有就问。宁少勿滥：合格岗位不够就少投，并说明原因。
+- **先用岗位库**（`scripts/job_pool.py`，表格 `岗位库.xlsx` 放在投递表旁边）：每天先跑 `ingest-simplify` 收 GitHub 应届岗清单，其他来源（LinkedIn、ATS API、Handshake）扫到的岗位整理成 JSON 用 `add` 收进来；带 `--tracker` 会自动把投递表里已有的标成「已投」。然后只看 `new` 列出的「新」岗位，看完用 `mark` 标成 候选/不投/已投/限投候选 并写一句理由——第二天就不会重复看。
 - 来源和批量扫描技巧见 `platform-playbook.md`「找岗」一节。
 - 投之前查重：Excel 所有投递工作表按公司名搜 + 邮箱搜确认信。LinkedIn 会把同一岗位换新 ID 重发，显示 Easy Apply 不代表没投过。
 

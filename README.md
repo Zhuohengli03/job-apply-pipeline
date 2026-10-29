@@ -1,6 +1,6 @@
 # job-apply-pipeline
 
-一个求职网申的 Agent Skill，Claude 和 ChatGPT 都能用。AI 按这套流程帮你找岗位、判断匹配度、写 cover letter、用浏览器填申请表并在核对后提交，最后把每一份投递记进 Excel。
+一个求职网申的 Agent Skill，Claude 和 ChatGPT 都能用。AI 按这套流程帮你自动收集岗位（GitHub 应届岗清单、公司招聘系统、LinkedIn 等）、判断匹配度、写 cover letter、用浏览器填申请表并在核对后提交，最后把每一份投递记进 Excel。
 
 这套流程是在几周里每天真实投递跑出来的，累计 200 多份，踩过的坑都写成了规则。skill 里没有任何个人信息：第一次用时，它会根据你的简历帮你建一份自己的 `profile.md`。
 
@@ -76,6 +76,7 @@
 | `references/runtime-claude.md`、`runtime-chatgpt.md` | 在 Claude 和 ChatGPT 里分别怎么操作 |
 | `adapters/chatgpt-project-instructions.md` | 没有 Skills 功能时，ChatGPT 用的指令 |
 | `scripts/tracker_update.py` | 投递表：新建、追加或更新、统计、搜索（需要 openpyxl） |
+| `scripts/job_pool.py` | 岗位库：自动收集 GitHub 应届岗清单等来源的岗位，去重、和投递表比对，每天只看新增的（需要 openpyxl） |
 | `scripts/cover_letter.py` | 生成 cover letter PDF（需要 reportlab） |
 
 ## 注意
