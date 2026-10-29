@@ -2,7 +2,7 @@
 
 只读当前要用的那一节。每条都是真实踩过的坑。
 
-目录：通用技巧｜找岗｜LinkedIn Easy Apply｜Greenhouse｜Ashby｜Lever｜Workday｜Oracle Cloud（Candidate Experience）｜Workable｜Rippling｜Jobvite｜Phenom（如 Blizzard）｜SmartRecruiters / Moka 海外｜Sea 集团（Shopee/Garena/Monee）｜Indeed｜Handshake｜国内校招官网通用｜字节｜小红书｜B 站｜百度｜米哈游等 antd 表单｜BOSS 直聘｜猎聘｜实习僧
+目录：通用技巧｜找岗｜LinkedIn Easy Apply｜Greenhouse｜Ashby｜Lever｜Workday｜Oracle Cloud（Candidate Experience）｜Workable｜Rippling｜Jobvite｜Phenom（如 Blizzard）｜SmartRecruiters / Moka 海外｜Sea 集团（Shopee/Garena/Monee）｜Indeed｜Handshake｜国内校招官网通用｜字节｜小红书｜B 站｜百度｜米哈游等 antd 表单｜BOSS 直聘 / 猎聘 / 实习僧（详见 outreach.md）
 
 ---
 
@@ -121,15 +121,5 @@
 - Moka 出生日期是年月选择器：点年份标题切换年代再选。
 - 「保存并预览」后可能弹邮箱验证码（本人完成）。
 
-## BOSS 直聘（打招呼，不算正式投递）
-- 只用网页、按正常人速度操作；**绝不批量调用 joblist 等接口**（会触发“账户异常”验证）。
-- 双方都回复前不能发附件：先发简历图片（PNG，由 PDF 导出），再发文字招呼语，这样 HR 列表预览显示文字前 15 字。顺序不能反。
-- 招呼语：前 15 字直接给出和 JD 最匹配的硬信息（带数字），不要“您好/我是”开头；后文 60–120 字补身份和对应关系；只写简历里有的事实。
-- 薪资在列表页是加密字体，去详情页看。按城市搜比全国搜准；`experience=102` 是在校/应届。
-
-## 猎聘
-- 附件上限 3 份，替换要本人先删。连续快速保存会触发验证码：编辑间隔 10–20 秒。antd 弹窗卡在透明动画里：把 `.ant-c-modal` 及祖先的 `opacity` 设 1、`transform` 设 none。
-- 「我的投递」：c.liepin.com/job/record/apply。搜索可加 `pubTime=7`、`workYearCode=1`。
-
-## 实习僧
-- 网页看不到 HR 消息（只在 App）。有的岗位点「投个简历」没有反应，算没投成。
+## BOSS 直聘 / 猎聘 / 实习僧
+这三个平台以打招呼和投附件为主，规则和操作见 `outreach.md`。猎聘页面 antd 弹窗卡在透明动画里时：把 `.ant-c-modal` 及祖先元素的 `opacity` 设 1、`transform` 设 none；遮罩 `.ant-modal-mask`、下拉 `.ant-select-dropdown` 可设 `display:none`。
