@@ -19,6 +19,7 @@
 ## 找岗
 - **LinkedIn guest 接口**（在 linkedin.com 页面里 fetch，每次间隔 ≥2 秒）：`/jobs-guest/jobs/api/seeMoreJobPostings/search?keywords=…&geoId=…&f_TPR=r86400&f_AL=true&f_E=1%2C2&start=0`（`r86400`=24h，`r604800`=一周；`f_AL=true` 只看 Easy Apply；`f_E=1,2` 实习/入门）。返回的 HTML 不能用 DOMParser，用 `split('data-entity-urn="urn:li:jobPosting:')` + 正则取标题、公司、时间。JD 用 `/jobs-guest/jobs/api/jobPosting/{id}`，取 `show-more-less-html__markup` 段。不要用隐藏 iframe 批量加载（会卡死标签）。长循环放后台跑，轮询计数器。
 - **Greenhouse / Ashby / Lever 公开 API**：`boards-api.greenhouse.io/v1/boards/{公司}/jobs`、`api.ashbyhq.com/posting-api/job-board/{公司}`、`api.lever.co/v0/postings/{公司}`。云端 curl 可能被代理挡、LinkedIn 等页面的 CSP 会挡跨域 fetch：新开一个标签直接打开其中一个 API 地址，再在这个页面里同源/跨域 fetch 其他公司。
+- **GitHub 应届岗清单（SimplifyJobs）**：`raw.githubusercontent.com/SimplifyJobs/New-Grad-Positions/dev/.github/scripts/listings.json`（实习用 `Summer2027-Internships`，年份按届改）。结构化 JSON，每天更新，字段有 category（Product / AI/ML/Data / Software / Quant / Hardware…）、locations、date_posted、sponsorship、url。用 `scripts/job_pool.py ingest-simplify` 直接收进岗位库：非技术岗用 `--categories Product` 加 `--title-include "data analyst|business analyst|product analyst|growth|game|strategy"`。sponsorship 绝大多数是 “Other”（没写），只有写明不担保/要公民的才自动排除，其余照样要读 JD 判断。清单以美国、英国技术公司为主，国内和亚洲岗位很少。
 - **Handshake**：搜索页有「Open to US visa sponsorship」快捷筛选。
 - **地区**：美国入门岗池子浅时，新加坡、香港、马来西亚的应届/管培岗是不错的补充（LinkedIn geoId：马来西亚 106808692）。
 - **LinkedIn Apply 外链**：要解析 href 里的 `url=` 参数才能看到真实 ATS 地址。
